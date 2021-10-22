@@ -24,7 +24,7 @@ let computerSelection = convertToRps();
 //Compares computerSelection to playerSelection to create result for round of rps
 function rpsRound(computerSelection, playerSelection) {
     if (computerSelection === 'rock' && playerSelection === 'rock') {
-            return 'Tie!';
+            return 'Tie!'; 
     }   else if (computerSelection === 'rock' && playerSelection === 'paper') {
             return 'You win!'
     }   else if (computerSelection === 'rock' && playerSelection === 'scissors')
@@ -45,24 +45,29 @@ function rpsRound(computerSelection, playerSelection) {
     }
 
 //Runs game for five rounds and adds increments score depending on result.
-function game() {
-    if (resultForGame == 'You win!') {
-        return +playerScore + 1;
-    }   else if (resultForGame == 'You lose!') {
-        return +computerScore + 1;
-    }
+function game(resultForGame) {
+    if (resultForGame === 'You win!') {
+        return 'You win!';
+    }   else if (resultForGame === 'You lose!') {
+        return 'You lose!';
+   }
 }
 
-//This is where the player makes their selection
 let playerScore = 0;
 
+let playerScoreInc = playerScore++;
+
 let computerScore = 0;
+
+let computerScoreInc = computerScore++;
+
+//This is where the player makes their selection
 
 let playerInput = 'rock';
 
 let playerSelection = playerInput.toLowerCase();
 
-let resultForGame = rpsRound;
+let resultForGame = rpsRound(computerSelection, playerSelection);
 
 console.log(computerPlay(1, 3));
 
@@ -74,4 +79,7 @@ console.log(playerSelection);
 
 console.log(rpsRound(computerSelection, playerSelection));
 
+console.log(resultForGame);
+
 console.log(game());
+
