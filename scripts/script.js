@@ -24,30 +24,45 @@ let computerSelection = convertToRps();
 //Compares computerSelection to playerSelection to create result for round of rps
 function rpsRound(computerSelection, playerSelection) {
     if (computerSelection === 'rock' && playerSelection === 'rock') {
-            return 'Tie! Play again.';
+            return 'Tie!';
     }   else if (computerSelection === 'rock' && playerSelection === 'paper') {
-            return 'Paper beats rock. You win!'
+            return 'You win!'
     }   else if (computerSelection === 'rock' && playerSelection === 'scissors')
-    return 'Rock beats scissors. You lose!'
+    return 'You lose!'
         else if (computerSelection === 'paper' && playerSelection === 'paper') {
-            return 'Tie! Play again.';
+            return 'Tie!';
     }   else if (computerSelection === 'paper' && playerSelection === 'scissors') {
-        return 'Scissors beat paper. You win!'
+        return 'You win!'
     }   else if (computerSelection === 'paper' && playerSelection === 'rock') {
-        return 'Paper beats rock. You lose!'
+        return 'You lose!'
     }   else if (computerSelection === 'scissors' && playerSelection === 'scissors') {
-        return 'Tie! Play again.'
+        return 'Tie!'
     }   else if (computerSelection === 'scissors' && playerSelection === 'paper') {
-        return 'Scissors beat paper. You lose!'
+        return 'You lose!'
     }   else if (computerSelection === 'scissors' && playerSelection === 'rock') {
-        return 'Rock beats paper. You win!'
+        return 'You win!'
     }
     }
 
+//Runs game for five rounds and adds increments score depending on result.
+function game() {
+    if (resultForGame == 'You win!') {
+        return +playerScore + 1;
+    }   else if (resultForGame == 'You lose!') {
+        return +computerScore + 1;
+    }
+}
+
 //This is where the player makes their selection
+let playerScore = 0;
+
+let computerScore = 0;
+
 let playerInput = 'rock';
 
 let playerSelection = playerInput.toLowerCase();
+
+let resultForGame = rpsRound;
 
 console.log(computerPlay(1, 3));
 
@@ -57,4 +72,6 @@ console.log(computerSelection);
 
 console.log(playerSelection);
 
-console.log(rpsRound(computerSelection, playerSelection))
+console.log(rpsRound(computerSelection, playerSelection));
+
+console.log(game());
