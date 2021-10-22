@@ -44,12 +44,12 @@ function rpsRound(computerSelection, playerSelection) {
     }
     }
 
-//Runs game for five rounds and adds increments score depending on result.
+//Runs game for five rounds and increments score depending on result.
 function game(resultForGame) {
     if (resultForGame === 'You win!') {
-        return 'You win!';
+        return playerScore;
     }   else if (resultForGame === 'You lose!') {
-        return 'You lose!';
+        return computerScore;
    }
 }
 
