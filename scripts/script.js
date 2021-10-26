@@ -1,81 +1,147 @@
-//Generate 1, 2 or 3 randomly.
-function computerPlay(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-//To feed computerPlay result to convertToRps
-let randomNumber = computerPlay(1,3)
-
-//Return rock, paper or scissors depending on result of computerPlay
-function convertToRps() {
-    if (randomNumber === 1) {
-        return 'rock';
-    } else if (randomNumber === 2) {
-        return 'paper';
-    } else if (randomNumber === 3) {
-        return 'scissors';
-    }
-}
-
-//To feed convertToRps result to rpsRound
-let computerSelection = convertToRps();
-
-//Compares computerSelection to playerSelection to create result for round of rps
-function rpsRound(computerSelection, playerSelection) {
-    if (computerSelection === 'rock' && playerSelection === 'rock') {
-            return 'Tie!'; 
-    }   else if (computerSelection === 'rock' && playerSelection === 'paper') {
-            return 'You win!'
-    }   else if (computerSelection === 'rock' && playerSelection === 'scissors')
-    return 'You lose!'
-        else if (computerSelection === 'paper' && playerSelection === 'paper') {
-            return 'Tie!';
-    }   else if (computerSelection === 'paper' && playerSelection === 'scissors') {
-        return 'You win!'
-    }   else if (computerSelection === 'paper' && playerSelection === 'rock') {
-        return 'You lose!'
-    }   else if (computerSelection === 'scissors' && playerSelection === 'scissors') {
-        return 'Tie!'
-    }   else if (computerSelection === 'scissors' && playerSelection === 'paper') {
-        return 'You lose!'
-    }   else if (computerSelection === 'scissors' && playerSelection === 'rock') {
-        return 'You win!'
-    }
-    }
-
-//Increments score depending on result.
-function game(resultForGame) {
-    if (resultForGame === 'You win!') {
-        return playerScore + 1;
-    }   else if (resultForGame === 'You lose!') {
-        return computerScore + 1;
+//computerPlay selects a random number and converts it to 'rock', 'paper', or 'scissors'
+function computerPlay() {
+   let randomNumber = Math.random()
+   if (randomNumber < .34) {
+       return 'rock';
+   }    else if (randomNumber < .67) {
+       return 'paper';
+   }    else {
+       return 'scissors';
    }
 }
 
-let playerScore = 0;
+//playRound determines if the playerSelection or computerSelection wins. 
+function playRound(playerSelection, computerSelection) {
+        if (computerSelection === 'rock' && playerSelection === 'rock') {
+                return 'Tie!'; 
+        }   else if (computerSelection === 'rock' && playerSelection === 'paper') {
+                return 'You win!'
+        }   else if (computerSelection === 'rock' && playerSelection === 'scissors')
+        return 'You lose!'
+            else if (computerSelection === 'paper' && playerSelection === 'paper') {
+                return 'Tie!';
+        }   else if (computerSelection === 'paper' && playerSelection === 'scissors') {
+            return 'You win!'
+        }   else if (computerSelection === 'paper' && playerSelection === 'rock') {
+            return 'You lose!'
+        }   else if (computerSelection === 'scissors' && playerSelection === 'scissors') {
+            return 'Tie!'
+        }   else if (computerSelection === 'scissors' && playerSelection === 'paper') {
+            return 'You lose!'
+        }   else if (computerSelection === 'scissors' && playerSelection === 'rock') {
+            return 'You win!'
+        }
+        }
 
-let computerScore = 0;
+//game takes inputs from the player, increments score and declares a winner after 5 rounds.
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    let playerInput = prompt('Enter rock, paper, or scissors.');
+    let playerSelection = playerInput;
+    let computerSelection = computerPlay();
 
-//This is where the player makes their selection
+    let gameResult1 = playRound(playerSelection, computerSelection);
+    if (gameResult1 === 'You win!') {
+        playerScore = playerScore + 1;
+        alert('You win!')
+    }   else if (gameResult1 === 'You lose!') {
+        computerScore = computerScore + 1;
+        alert('You lose!')
+    }   else {
+        alert('Tie!')
+}
+        console.log('Round 1 Score')
+        console.log(computerScore);
+        console.log(playerScore);
 
-let playerInput = 'rock';
+    playerInput = prompt('Enter rock, paper, or scissors.');
+    playerSelection = playerInput;
+    computerSelection = computerPlay();
 
-let playerSelection = playerInput.toLowerCase();
+    let gameResult2 = playRound(playerSelection, computerSelection);
+    if (gameResult2 === 'You win!') {
+        playerScore = playerScore + 1;
+        alert('You win!')
+    }   else if (gameResult1 === 'You lose!') {
+        computerScore = computerScore + 1;
+        alert('You lose!')
+    }   else {
+        alert('Tie!')
+    }
 
-let resultForGame = rpsRound(computerSelection, playerSelection);
+        console.log('Round 2 Score')
+        console.log(computerScore);
+        console.log(playerScore);
 
-console.log(computerPlay(1, 3));
+    playerInput = prompt('Enter rock, paper, or scissors.');
+    playerSelection = playerInput;
+    computerSelection = computerPlay();
 
-console.log(convertToRps(computerPlay));
+    let gameResult3 = playRound(playerSelection, computerSelection);
+    if (gameResult3 === 'You win!') {
+        playerScore = playerScore + 1;
+        alert('You win!')
+    }   else if (gameResult1 === 'You lose!') {
+        computerScore = computerScore + 1;
+        alert('You lose!')
+    }   else {
+        alert('Tie!')
+    }
 
-console.log(computerSelection);
+        console.log('Round 3 Score')
+        console.log(computerScore);
+        console.log(playerScore);
 
-console.log(playerSelection);
+    playerInput = prompt('Enter rock, paper, or scissors.');
+    playerSelection = playerInput;
+    computerSelection = computerPlay();
+        
+    let gameResult4 = playRound(playerSelection, computerSelection);
+    if (gameResult4 === 'You win!') {
+        playerScore = playerScore + 1;
+        alert('You win!')
+    }   else if (gameResult1 === 'You lose!') {
+        computerScore = computerScore + 1;
+        alert('You lose!')
+    }   else {
+        alert('Tie!')
+    }
 
-console.log(rpsRound(computerSelection, playerSelection));
+        console.log('Round 4 Score')
+        console.log(computerScore);
+        console.log(playerScore);
 
-console.log(resultForGame);
+    playerInput = prompt('Enter rock, paper, or scissors.');
+    playerSelection = playerInput;
+    computerSelection = computerPlay();
 
-console.log(game());
+    let gameResult5 = playRound(playerSelection, computerSelection);
+    if (gameResult5 === 'You win!') {
+        playerScore = playerScore + 1;
+        alert('You win!')
+    }   else if (gameResult1 === 'You lose!') {
+        computerScore = computerScore + 1;
+        alert('You lose!')
+    }   else {
+        alert('Tie!')
+    }
 
+        console.log('Round 5 Score')
+        console.log(computerScore);
+        console.log(playerScore);
+
+    if (+playerScore > +computerScore) {
+         alert('Victory!')
+    }   else if (+computerScore > +playerScore) {
+        alert('Defeat!')
+     }   else if (+computerScore === +playerScore) 
+        alert('Tie game!')
+}
+
+const playerInput = '';
+const playerSelection = playerInput.toLowerCase();
+const computerSelection = computerPlay();
+
+game();
